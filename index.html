@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090908">
+<title>RIO 10K · Riobamba · 14–17 de enero</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#090908;
+  --text:#eee7d7;
+  --gold:#d6b477;
+  --muted:#a39d90;
+  --line:#d6b47735;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button,a,input,select{touch-action:manipulation}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--gold);outline-offset:5px
+}
+[hidden]{display:none!important}
+img,video{display:block;max-width:100%}
+h1,h2,h3,p{margin:0}
+.wrap{width:calc(100% - 88px);max-width:1280px;margin:auto}
+.eyebrow{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);line-height:1.8
+}
+.button{
+  display:inline-flex;align-items:center;justify-content:center;gap:22px;
+  padding:17px 23px;min-height:50px;border:1px solid var(--line);
+  background:transparent;color:var(--text);font-size:10px;
+  letter-spacing:.13em;text-transform:uppercase
+}
+.button:hover{border-color:var(--gold)}
+.button.gold{background:var(--gold);color:#16130d;border-color:var(--gold)}
+.button.gold:hover{background:#ead2a4}
+.button span{font-size:19px}
+.logo-box{
+  display:block;position:relative;aspect-ratio:2.7;overflow:hidden;
+  mix-blend-mode:screen
+}
+.logo-box img{width:100%;height:100%;object-fit:contain}
+.logo-box.portrait-logo{aspect-ratio:2.35}
+.logo-box.portrait-logo img{
+  position:absolute;left:0;top:0;height:auto;transform:translateY(-35.5%)
+}
+.skip{
+  position:fixed;top:10px;left:15px;z-index:100;padding:15px;
+  background:var(--gold);color:#111;transform:translateY(-150%)
+}
+.skip:focus{transform:none}
+header{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  background:#090908b8;backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line)
+}
+.nav{
+  height:82px;display:flex;align-items:center;
+  justify-content:space-between;gap:25px
+}
+.brand{width:120px;flex:none}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+.nav-links a:hover{color:var(--gold)}
+.nav>.button{padding:13px 17px;min-height:42px}
+.track{height:290svh;min-height:1550px}
+.cinema{
+  height:100svh;min-height:650px;position:sticky;top:0;
+  overflow:hidden;isolation:isolate;
+  background:radial-gradient(ellipse at 75% 30%,#56401d,#0a0907 70%)
+}
+.background-video{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;
+  object-fit:cover;object-position:68% center;z-index:-3
+}
+.shade{
+  position:absolute;inset:0;z-index:-2;
+  background:
+    linear-gradient(90deg,#050504ca,transparent 85%),
+    linear-gradient(0deg,#090908,transparent 32%,transparent 78%,#09090844)
+}
+.cinema-inner{
+  height:100%;display:flex;align-items:center;position:relative;
+  padding-top:80px;padding-bottom:85px
+}
+.intro{width:57%;max-width:680px;will-change:opacity,transform}
+.date{
+  font:clamp(15px,1.7vw,23px) Georgia,serif;
+  letter-spacing:.12em;text-transform:uppercase;margin-top:14px
+}
+.hero-logo{margin:26px 0 25px}
+.tagline{font:clamp(24px,2.4vw,35px)/1.35 Georgia,serif}
+.actions{
+  display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:30px
+}
+.text-link{
+  font-size:12px;border-bottom:1px solid var(--line);padding-block:12px
+}
+.text-link:hover{color:var(--gold)}
+.story{
+  position:absolute;left:0;bottom:28%;width:65%;
+  opacity:0;pointer-events:none
+}
+.story-title{
+  font:clamp(54px,7vw,100px)/1.02 Georgia,serif;
+  letter-spacing:-.04em;margin-top:25px
+}
+.story-title em,h2 em{font-style:normal;color:var(--gold)}
+.story p:last-child{
+  font-size:14px;color:#d4ccbd;line-height:1.8;margin-top:24px
+}
+.story-amount{
+  font:clamp(110px,16vw,220px)/1.1 Georgia,serif;
+  color:var(--gold);margin-top:20px
+}
+.cinema-bottom{
+  position:absolute;bottom:30px;left:0;right:0;display:flex;
+  align-items:center;justify-content:space-between;color:var(--muted);
+  font-size:9px;letter-spacing:.13em;text-transform:uppercase
+}
+.scroll-cue{display:flex;align-items:center;gap:14px}
+.scroll-cue:before{
+  content:"";width:1px;height:30px;background:var(--gold)
+}
+.progress{display:flex;align-items:center;gap:13px}
+.rail{width:90px;height:1px;background:var(--line)}
+.rail i{
+  display:block;height:1px;background:var(--gold);
+  width:100%;transform:scaleX(0);transform-origin:left
+}
+section.content{padding:100px 0}
+h2{
+  font:clamp(42px,5.5vw,76px)/1.07 Georgia,serif;
+  letter-spacing:-.035em
+}
+.section-heading{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:30px;margin-bottom:45px
+}
+.section-heading .eyebrow{margin-bottom:22px}
+.muted{font-size:13px;line-height:1.9;color:var(--muted)}
+.entries{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-block:1px solid var(--line)
+}
+.entry{padding:35px 40px}
+.entry:first-child{border-right:1px solid var(--line)}
+.price{
+  font:clamp(90px,11vw,145px)/1.3 Georgia,serif;
+  letter-spacing:-.055em
+}
+.price span{
+  font-size:.5em;color:var(--gold);vertical-align:top;
+  position:relative;top:.2em;margin-right:5px
+}
+.stack{font-size:13px;color:var(--gold);letter-spacing:.04em}
+.stack span{color:var(--muted);font-size:11px;margin-left:6px}
+.addon{
+  text-align:center;margin:28px 0 45px;letter-spacing:.23em;
+  text-transform:uppercase;font-size:9px;color:var(--gold)
+}
+.prizes{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.prize{
+  padding:34px 38px;border:1px solid var(--line);
+  background:linear-gradient(125deg,#29211250,#11110f);
+  position:relative;overflow:hidden
+}
+.award{
+  font:clamp(90px,10vw,130px)/1.4 Georgia,serif;
+  letter-spacing:-.05em;color:var(--gold)
+}
+.prize-mark{
+  position:absolute;right:10px;bottom:-35px;color:#d6b4770a;
+  font:230px Georgia,serif;pointer-events:none
+}
+.ticket{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:15px;padding-top:23px
+}
+.ticket+.ticket{border-top:1px solid var(--line);margin-top:22px}
+.ticket p{font-size:11px;color:var(--muted);line-height:1.8}
+.ticket strong{font:24px Georgia,serif;color:var(--text)}
+.ticket>span{font:40px Georgia,serif;color:var(--gold)}
+.qualified{
+  background:linear-gradient(#11110e,#090908);
+  border-top:1px solid #ffffff0a
+}
+.empty{
+  text-align:center;border:1px solid var(--line);padding:52px 24px;
+  background:radial-gradient(ellipse at bottom,#b6852910,transparent 70%)
+}
+.empty-suit{
+  font:54px Georgia,serif;color:var(--gold);margin-bottom:22px
+}
+.empty h3{
+  font:clamp(30px,3.8vw,46px)/1.15 Georgia,serif;margin:20px 0
+}
+.filters{display:flex;gap:16px;margin-bottom:24px}
+.filters input,.filters select{
+  color:var(--text);background:#141410;
+  border:1px solid var(--line);padding:16px;font-size:13px
+}
+.filters input{flex:1;min-width:0}
+.result{font-size:12px;color:var(--muted);margin-bottom:20px}
+.result:empty{display:none}
+.players{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.player{border-bottom:1px solid var(--line);padding-bottom:22px}
+.portrait{
+  position:relative;aspect-ratio:4/5;
+  background:linear-gradient(135deg,#40351f,#10100d);
+  width:100%;border:0;padding:0;color:var(--gold);
+  display:grid;place-items:center;font:70px Georgia,serif;overflow:hidden
+}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.play-small{
+  position:absolute;bottom:16px;right:16px;border:1px solid var(--gold);
+  border-radius:50%;background:#090908aa;width:44px;height:44px;
+  display:grid;place-items:center;font:12px Arial
+}
+.player h3{font:25px Georgia,serif;margin-top:18px}
+.player .muted{font-size:11px;margin-top:8px}
+.gallery-card{
+  display:block;width:100%;padding:0;text-align:left;
+  border:0;background:none;color:var(--text)
+}
+.gallery-image{
+  position:relative;display:block;aspect-ratio:2.1;
+  overflow:hidden;background:#17140e
+}
+.gallery-image video{
+  width:100%;height:100%;object-fit:cover;object-position:70%;opacity:.8
+}
+.play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:80px;height:80px;display:grid;place-items:center;
+  border:1px solid var(--gold);border-radius:50%;background:#09090866;
+  backdrop-filter:blur(6px);font-size:18px;padding-left:4px
+}
+.gallery-card:hover .play{background:var(--gold);color:#12100b}
+.gallery-caption{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:24px 0;border-bottom:1px solid var(--line);
+  font:26px Georgia,serif
+}
+.gallery-caption small{
+  font:10px Arial;letter-spacing:.12em;color:var(--gold)
+}
+.closing{
+  padding:90px 0 105px;text-align:center;border-top:1px solid #ffffff0a
+}
+.closing h2{font-size:clamp(60px,8vw,110px);margin:27px 0 35px}
+footer{border-top:1px solid var(--line);padding:25px 0}
+.footer-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:25px
+}
+.footer-inner p{font-size:11px;color:var(--muted)}
+dialog{
+  width:min(1000px,calc(100% - 28px));max-height:92svh;
+  padding:0;border:1px solid var(--line);
+  background:#11110f;color:var(--text)
+}
+dialog::backdrop{background:#000e;backdrop-filter:blur(7px)}
+.dialog-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 20px;gap:20px
+}
+.dialog-head h2{font:25px Georgia,serif}
+.close{
+  background:none;color:var(--text);border:1px solid var(--line);
+  width:42px;height:42px;font-size:27px
+}
+.stage{background:#000;min-height:180px;display:grid;place-items:center}
+.stage video,.stage img{width:100%;max-height:70svh;object-fit:contain}
+.stage p{padding:35px;line-height:1.7;color:var(--muted)}
+.local-tools{
+  position:fixed;bottom:16px;left:16px;z-index:40;margin:0;padding:18px;
+  border:1px dashed var(--line);max-width:450px;
+  width:calc(100% - 32px);background:#16150ff2;
+  backdrop-filter:blur(14px)
+}
+.local-tools p{font-size:12px;line-height:1.8;color:var(--muted)}
+.local-tools summary{cursor:pointer;color:var(--gold);font-size:13px}
+.local-tools .actions{margin:16px 0;gap:10px}
+.local-tools .button{min-height:40px;padding:12px 16px;font-size:9px}
+@media(max-width:800px){
+  .wrap{width:calc(100% - 44px)}
+  .nav{height:74px}
+  .brand{width:100px}
+  .nav-links{gap:16px}
+  .nav-links a{font-size:8px;letter-spacing:.05em}
+  .nav>.button{display:none}
+  .cinema{min-height:650px}
+  .cinema-inner{align-items:flex-end;padding-bottom:125px}
+  .background-video{object-position:75% center}
+  .shade{
+    background:linear-gradient(90deg,#050504a6,#05050422),
+    linear-gradient(0deg,#090908,#09090877 34%,transparent 78%)
+  }
+  .intro{width:100%;max-width:530px}
+  .hero-logo{max-width:480px;margin:24px 0}
+  .date{font-size:14px}
+  .tagline{font-size:27px}
+  .actions{gap:15px 20px;margin-top:24px}
+  .intro .button{font-size:9px;padding:16px 18px;gap:14px}
+  .text-link{font-size:11px}
+  .cinema-bottom{bottom:27px;font-size:8px}
+  .rail{width:65px}
+  .story{width:95%;bottom:24%}
+  .story-title{font-size:58px}
+  .story-amount{font-size:145px}
+  .story p:last-child{font-size:12px}
+  section.content{padding:75px 0}
+  .section-heading{
+    align-items:flex-start;flex-direction:column;
+    gap:22px;margin-bottom:32px
+  }
+  .section-heading .eyebrow{margin-bottom:18px}
+  h2{font-size:47px}
+  .entry{padding:28px 23px}
+  .price{font-size:99px}
+  .prizes{gap:18px}
+  .prize{padding:28px}
+  .prize .eyebrow{font-size:8px;letter-spacing:.13em}
+  .award{font-size:87px;margin-top:15px}
+  .ticket strong{font-size:21px}
+  .ticket>span{font-size:33px}
+  .players{grid-template-columns:1fr 1fr;gap:18px}
+  .gallery-image{aspect-ratio:16/11}
+  .gallery-caption{font-size:22px}
+  .closing{padding:75px 0}
+  .closing h2{font-size:73px}
+  .footer-inner{flex-wrap:wrap}
+  .footer-inner p{font-size:10px}
+}
+@media(max-width:480px){
+  .nav-links{gap:12px}
+  .nav-links a{font-size:7px}
+  .nav .brand{width:94px}
+  .date{font-size:12px}
+  .intro .eyebrow{font-size:8px}
+  .intro .actions{gap:7px 18px}
+  .intro .button{font-size:8px;padding:15px;gap:12px}
+  .text-link{font-size:10px}
+  .tagline{font-size:24px}
+  .story-title{font-size:49px}
+  .story-amount{font-size:125px}
+  .entry{padding:25px 17px}
+  .entry .eyebrow{font-size:8px}
+  .price{font-size:79px}
+  .stack span{display:block;margin:7px 0 0}
+  .prizes{grid-template-columns:1fr}
+  .award{font-size:110px;line-height:1.1;margin-top:20px}
+  .prize:first-child{min-height:214px}
+  .ticket strong{font-size:25px}
+  .ticket>span{font-size:40px}
+  .gallery-caption{font-size:20px;gap:16px}
+  .gallery-caption small{font-size:8px}
+  .play{width:63px;height:63px;font-size:15px}
+  .closing h2{font-size:62px}
+  .closing .eyebrow{font-size:8px}
+  .filters{flex-wrap:wrap}
+  .filters input{width:100%;flex:auto}
+  .player h3{font-size:22px}
+  .portrait{font-size:48px}
+  .footer-inner p:last-child{
+    width:100%;padding-top:15px;border-top:1px solid var(--line)
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .track{height:auto;min-height:0}
+  .cinema{position:relative}
+  .story,.progress,.scroll-cue{display:none}
+  .intro{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#torneo">Saltar al torneo</a>
+
+<header>
+  <div class="nav wrap">
+    <a class="brand" href="#inicio" aria-label="RIO 10K, inicio">
+      <span class="logo-box">
+        <img class="logo" src="logo.png" alt="RIO 10K">
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#torneo">El torneo</a>
+      <a href="#clasificados">Clasificados</a>
+      <a href="#galeria">Galería</a>
+    </nav>
+    <a class="button" href="#clasificados">
+      Ver clasificados <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="track" id="inicio" aria-labelledby="titulo">
+    <div class="cinema">
+      <video id="fondo" class="background-video" muted playsinline
+        preload="auto" aria-hidden="true" tabindex="-1"></video>
+      <div class="shade" aria-hidden="true"></div>
+
+      <div class="cinema-inner wrap">
+        <div class="intro" id="intro">
+          <p class="eyebrow">Riobamba · Ecuador</p>
+          <p class="date">Del 14 al 17 de enero</p>
+
+          <h1 class="hero-logo" id="titulo">
+            <span class="logo-box">
+              <img class="logo" src="logo.png" alt="RIO 10K">
+            </span>
+          </h1>
+
+          <p class="tagline">
+            La próxima gran mano<br>se juega en Riobamba.
+          </p>
+          <div class="actions">
+            <a class="button gold" href="#torneo">
+              Descubre el torneo <span aria-hidden="true">↗</span>
+            </a>
+            <a class="text-link" href="#clasificados">
+              Ver clasificados →
+            </a>
+          </div>
+        </div>
+
+        <div class="story" id="historia2" aria-hidden="true">
+          <p class="eyebrow">Cada ficha cuenta</p>
+          <div class="story-title">
+            Tu siguiente<br><em>gran jugada.</em>
+          </div>
+          <p>Buy-in $80 · 30.000 puntos</p>
+        </div>
+
+        <div class="story" id="historia3" aria-hidden="true">
+          <p class="eyebrow">Premio chip leader 1A</p>
+          <div class="story-amount">$500</div>
+          <p>Una mesa. Muchas historias.</p>
+        </div>
+      </div>
+
+      <div class="cinema-bottom wrap" aria-hidden="true">
+        <span class="scroll-cue">Desliza para descubrir</span>
+        <div class="progress">
+          <span id="paso">01</span>
+          <span class="rail"><i id="avance"></i></span>
+          <span>03</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content" id="torneo">
+    <div class="wrap">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / El torneo</p>
+          <h2>Todo empieza<br>con <em>una mano.</em></h2>
+        </div>
+        <p class="muted">
+          Cuatro días para encontrarnos en la mesa.<br>
+          Riobamba, del 14 al 17 de enero.
+        </p>
+      </div>
+
+      <div class="entries">
+        <article class="entry">
+          <p class="eyebrow">Buy-in</p>
+          <p class="price"><span>$</span>80</p>
+          <p class="stack">30.000 <span>puntos</span></p>
+        </article>
+        <article class="entry">
+          <p class="eyebrow">Recompra</p>
+          <p class="price"><span>$</span>80</p>
+          <p class="stack">50.000 <span>puntos</span></p>
+        </article>
+      </div>
+
+      <p class="addon">— &nbsp; No add-on &nbsp; —</p>
+
+      <div class="prizes">
+        <article class="prize">
+          <p class="eyebrow">Premio chip leader 1A</p>
+          <p class="award">$500</p>
+          <span class="prize-mark" aria-hidden="true">♠</span>
+        </article>
+
+        <article class="prize">
+          <p class="eyebrow">Premio chip leader 1B</p>
+          <div class="ticket">
+            <p>Entrada torneo<br><strong>Equipos ABC</strong></p>
+            <span>$210</span>
+          </div>
+          <div class="ticket">
+            <p>Entrada torneo<br><strong>Puyo 10K</strong></p>
+            <span>$100</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content qualified" id="clasificados">
+    <div class="wrap">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">02 / Los protagonistas</p>
+          <h2>Camino a <em>RIO 10K.</em></h2>
+        </div>
+        <p class="muted">
+          Las caras y las historias<br>que llegan a la mesa.
+        </p>
+      </div>
+
+      <div class="filters" id="filtros" hidden>
+        <input id="buscar" type="search"
+          placeholder="Buscar por nombre o ciudad"
+          aria-label="Buscar por nombre o ciudad">
+        <select id="dia" aria-label="Filtrar por día">
+          <option value="">Todos los días</option>
+          <option>1A</option>
+          <option>1B</option>
+        </select>
+      </div>
+
+      <p class="result" id="resultado"
+        role="status" aria-live="polite"></p>
+      <div class="players" id="jugadores"></div>
+
+      <div class="empty" id="sin-jugadores">
+        <div class="empty-suit" aria-hidden="true">♠</div>
+        <p class="eyebrow">La próxima historia puede ser la tuya</p>
+        <h3>Los protagonistas<br>están por llegar.</h3>
+        <p class="muted">
+          Aquí publicaremos las fotos y los videos<br>
+          de los clasificados al torneo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content" id="galeria">
+    <div class="wrap">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">03 / Dentro del torneo</p>
+          <h2>Más allá<br>de <em>las cartas.</em></h2>
+        </div>
+        <p class="muted">
+          Imágenes, momentos y toda<br>la emoción de RIO 10K.
+        </p>
+      </div>
+
+      <button class="gallery-card" id="ver-video"
+        aria-label="Reproducir El espíritu de RIO 10K">
+        <span class="gallery-image">
+          <video id="miniatura" muted playsinline preload="metadata"
+            aria-hidden="true" tabindex="-1"></video>
+          <span class="play" aria-hidden="true">▶</span>
+        </span>
+        <span class="gallery-caption">
+          El espíritu de RIO 10K <small>VER VIDEO ↗</small>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <p class="eyebrow">Riobamba · Del 14 al 17 de enero</p>
+      <h2>Nos vemos<br><em>en la mesa.</em></h2>
+      <a class="button" href="#inicio">
+        Volver al inicio <span aria-hidden="true">↑</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner wrap">
+    <a class="brand" href="#inicio" aria-label="RIO 10K, inicio">
+      <span class="logo-box">
+        <img class="logo" src="logo.png" alt="RIO 10K" loading="lazy">
+      </span>
+    </a>
+    <p>Riobamba, Ecuador</p>
+    <p>Del 14 al 17 de enero</p>
+  </div>
+</footer>
+
+<details class="local-tools" id="herramientas" hidden>
+  <summary>Vista previa local · Cargar tus archivos</summary>
+  <div class="actions">
+    <button class="button" id="elegir-logo">Cargar logo</button>
+    <button class="button" id="elegir-video">Cargar video</button>
+  </div>
+  <p>
+    Si las imágenes no aparecen, selecciona aquí el logo y el video.
+    Se utilizan solo en este navegador. Para publicarlos,
+    guarda logo.png y torneo.mp4 junto al archivo HTML.
+  </p>
+  <p id="estado-local" role="status"></p>
+  <input type="file" id="archivo-logo" accept="image/*" hidden>
+  <input type="file" id="archivo-video" accept="video/*" hidden>
+</details>
+
+<dialog id="visor" aria-labelledby="titulo-visor">
+  <div class="dialog-head">
+    <h2 id="titulo-visor"></h2>
+    <button class="close" id="cerrar" aria-label="Cerrar">×</button>
+  </div>
+  <div class="stage" id="contenido-visor"></div>
+</dialog>
+
+<script>
+/*
+Añade aquí los datos reales cuando estén disponibles.
+Cada registro puede contener:
+nombre, ciudad, dia, puntos, foto, video.
+Las rutas de foto y video deben corresponder a archivos de tu página.
+*/
+const CLASIFICADOS = [];
+
+const $ = s => document.querySelector(s);
+const clip = n => Math.max(0, Math.min(1, Number.isFinite(n) ? n : 0));
+const suave = (a, b, p) => {
+  const n = clip((p - a) / (b - a));
+  return n * n * (3 - 2 * n);
+};
+
+const reducir = matchMedia("(prefers-reduced-motion: reduce)");
+const fondo = $("#fondo");
+const miniatura = $("#miniatura");
+const pista = $("#inicio");
+const escena = $(".cinema");
+
+let videoActual = "torneo.mp4";
+let pendiente = false;
+let objetivo = 0;
+let emitido = NaN;
+let listo = false;
+let inicio = 0;
+let distancia = 1;
+let logoTemporal = "";
+let videoTemporal = "";
+
+function ajustarLogo(img) {
+  if (img.naturalWidth) {
+    img.parentElement.classList.toggle(
+      "portrait-logo",
+      img.naturalHeight / img.naturalWidth > 1.5
+    );
+  }
+}
+
+document.querySelectorAll(".logo").forEach(img => {
+  img.addEventListener("load", () => ajustarLogo(img));
+  if (img.complete) ajustarLogo(img);
+});
+
+function medir() {
+  inicio = pista.getBoundingClientRect().top + scrollY;
+  distancia = Math.max(1, pista.offsetHeight - escena.offsetHeight);
+}
+
+function buscarTiempo() {
+  if (!listo || document.hidden || fondo.seeking) return;
+
+  if (
+    Math.abs(fondo.currentTime - objetivo) < .025 ||
+    Math.abs(emitido - objetivo) < .008
+  ) return;
+
+  try {
+    emitido = objetivo;
+    fondo.currentTime = objetivo;
+  } catch {
+    emitido = NaN;
+  }
+}
+
+function actualizar() {
+  pendiente = false;
+
+  const p = reducir.matches
+    ? 0
+    : clip((scrollY - inicio) / distancia);
+
+  const opacidad = 1 - suave(.16, .32, p);
+
+  $("#intro").style.opacity = opacidad;
+  $("#intro").style.transform =
+    "translateY(" + (-25 * (1 - opacidad)) + "px)";
+  $("#intro").style.pointerEvents = opacidad > .04 ? "" : "none";
+
+  $("#intro").querySelectorAll("a").forEach(a => {
+    if (opacidad > .04) a.removeAttribute("tabindex");
+    else a.tabIndex = -1;
+  });
+
+  $("#historia2").style.opacity =
+    suave(.30, .44, p) * (1 - suave(.61, .73, p));
+
+  $("#historia3").style.opacity = suave(.72, .86, p);
+  $("#avance").style.transform = "scaleX(" + p + ")";
+  $("#paso").textContent = p < .33 ? "01" : p < .72 ? "02" : "03";
+
+  objetivo = Number.isFinite(fondo.duration)
+    ? p * Math.max(0, fondo.duration - 1 / 30)
+    : 0;
+
+  buscarTiempo();
+}
+
+function solicitar() {
+  if (!pendiente) {
+    pendiente = true;
+    requestAnimationFrame(actualizar);
+  }
+}
+
+function cargarVideo(src) {
+  fondo.pause();
+  miniatura.pause();
+  listo = false;
+  emitido = NaN;
+  videoActual = src;
+  fondo.src = src;
+  miniatura.src = src;
+  fondo.load();
+  miniatura.load();
+}
+
+fondo.addEventListener("loadedmetadata", () => {
+  listo = Number.isFinite(fondo.duration) && fondo.duration > 0;
+  emitido = NaN;
+  solicitar();
+});
+
+fondo.addEventListener("loadeddata", solicitar);
+fondo.addEventListener("seeked", solicitar);
+fondo.addEventListener("play", () => fondo.pause());
+miniatura.addEventListener("play", () => miniatura.pause());
+
+fondo.addEventListener("error", () => {
+  listo = false;
+  if (location.protocol === "file:") {
+    $("#herramientas").open = true;
+    $("#estado-local").textContent =
+      "Selecciona tu video con el botón Cargar video.";
+  }
+});
+
+addEventListener("scroll", solicitar, { passive: true });
+addEventListener("resize", () => {
+  medir();
+  solicitar();
+}, { passive: true });
+
+addEventListener("load", () => {
+  medir();
+  solicitar();
+});
+
+reducir.addEventListener("change", () => {
+  emitido = NaN;
+  medir();
+  solicitar();
+});
+
+document.addEventListener("visibilitychange", () => {
+  fondo.pause();
+  if (!document.hidden) {
+    emitido = NaN;
+    solicitar();
+  }
+});
+
+medir();
+cargarVideo(videoActual);
+solicitar();
+
+const visor = $("#visor");
+const contenido = $("#contenido-visor");
+let origen = null;
+let overflowAnterior = "";
+
+function nodo(tag, clase, texto) {
+  const n = document.createElement(tag);
+  if (clase) n.className = clase;
+  if (texto != null) n.textContent = texto;
+  return n;
+}
+
+function abrir(tipo, src, titulo, boton) {
+  if (visor.open) return;
+
+  origen = boton;
+  $("#titulo-visor").textContent = titulo;
+
+  const media = document.createElement(
+    tipo === "video" ? "video" : "img"
+  );
+
+  if (tipo === "video") {
+    media.controls = true;
+    media.playsInline = true;
+    media.preload = "metadata";
+  } else {
+    media.alt = titulo;
+  }
+
+  media.addEventListener("error", () => {
+    if (visor.open && contenido.contains(media)) {
+      contenido.replaceChildren(
+        nodo(
+          "p",
+          "",
+          "No se pudo cargar este contenido. Comprueba que el archivo esté disponible."
+        )
+      );
+    }
+  }, { once: true });
+
+  media.src = src;
+  contenido.replaceChildren(media);
+
+  overflowAnterior = document.body.style.overflow;
+  document.body.style.overflow = "hidden";
+  visor.showModal();
+  $("#cerrar").focus();
+
+  if (tipo === "video") media.play().catch(() => {});
+}
+
+$("#ver-video").addEventListener("click", e => {
+  abrir(
+    "video",
+    videoActual,
+    "El espíritu de RIO 10K",
+    e.currentTarget
+  );
+});
+
+$("#cerrar").addEventListener("click", () => visor.close());
+
+visor.addEventListener("click", e => {
+  const r = visor.getBoundingClientRect();
+  if (
+    e.target === visor &&
+    (
+      e.clientX < r.left || e.clientX > r.right ||
+      e.clientY < r.top || e.clientY > r.bottom
+    )
+  ) visor.close();
+});
+
+visor.addEventListener("close", () => {
+  contenido.querySelectorAll("video").forEach(v => {
+    v.pause();
+    v.removeAttribute("src");
+    v.load();
+  });
+
+  contenido.replaceChildren();
+  document.body.style.overflow = overflowAnterior;
+
+  if (origen?.isConnected) {
+    origen.focus({ preventScroll: true });
+  }
+  origen = null;
+});
+
+const normalizar = s => String(s ?? "")
+  .normalize("NFKD")
+  .replace(/[\u0300-\u036f]/g, "")
+  .toLowerCase()
+  .trim();
+
+function ruta(s) {
+  if (typeof s !== "string" || !s.trim()) return null;
+
+  try {
+    const u = new URL(s, document.baseURI);
+    const permitido =
+      ["https:", "http:"].includes(u.protocol) ||
+      (location.protocol === "file:" && u.protocol === "file:");
+
+    return permitido ? u.href : null;
+  } catch {
+    return null;
+  }
+}
+
+const participantes = CLASIFICADOS.filter(p =>
+  p &&
+  typeof p.nombre === "string" &&
+  p.nombre.trim()
+);
+
+function mostrarJugadores() {
+  const encontrados = participantes.filter(p =>
+    (!$("#dia").value || p.dia === $("#dia").value) &&
+    normalizar([p.nombre, p.ciudad, p.dia].join(" "))
+      .includes(normalizar($("#buscar").value))
+  );
+
+  $("#jugadores").replaceChildren();
+  $("#filtros").hidden = !participantes.length;
+  $("#sin-jugadores").hidden = !!participantes.length;
+
+  $("#resultado").textContent = participantes.length
+    ? encontrados.length
+      ? encontrados.length +
+        (encontrados.length === 1 ? " clasificado" : " clasificados")
+      : "No encontramos clasificados con esa búsqueda."
+    : "";
+
+  encontrados.forEach(p => {
+    const foto = ruta(p.foto);
+    const video = ruta(p.video);
+    const tarjeta = nodo("article", "player");
+    const retrato = nodo(video || foto ? "button" : "div", "portrait");
+
+    if (foto) {
+      const img = nodo("img");
+      img.src = foto;
+      img.alt = p.nombre;
+      img.loading = "lazy";
+      retrato.append(img);
+    } else {
+      retrato.textContent = p.nombre
+        .split(/\s+/)
+        .slice(0, 2)
+        .map(n => n[0])
+        .join("");
+    }
+
+    if (video) {
+      const icono = nodo("span", "play-small", "▶");
+      icono.setAttribute("aria-hidden", "true");
+      retrato.append(icono);
+    }
+
+    if (video || foto) {
+      retrato.type = "button";
+      retrato.setAttribute("aria-label", "Ver " + p.nombre);
+      retrato.addEventListener("click", () => {
+        abrir(
+          video ? "video" : "imagen",
+          video || foto,
+          p.nombre,
+          retrato
+        );
+      });
+    }
+
+    const puntos = Number.isFinite(p.puntos) && p.puntos >= 0
+      ? new Intl.NumberFormat("es-EC").format(p.puntos) + " puntos"
+      : "";
+
+    tarjeta.append(
+      retrato,
+      nodo("h3", "", p.nombre),
+      nodo(
+        "p",
+        "muted",
+        [
+          p.ciudad,
+          p.dia ? "Día " + p.dia : "",
+          puntos
+        ].filter(Boolean).join(" · ")
+      )
+    );
+
+    $("#jugadores").append(tarjeta);
+  });
+}
+
+$("#buscar").addEventListener("input", mostrarJugadores);
+$("#dia").addEventListener("change", mostrarJugadores);
+mostrarJugadores();
+
+if (location.protocol === "file:") {
+  $("#herramientas").hidden = false;
+
+  $("#elegir-logo").addEventListener("click", () => {
+    $("#archivo-logo").click();
+  });
+
+  $("#elegir-video").addEventListener("click", () => {
+    $("#archivo-video").click();
+  });
+
+  $("#archivo-logo").addEventListener("change", e => {
+    const f = e.target.files[0];
+    if (!f) return;
+
+    if (logoTemporal) URL.revokeObjectURL(logoTemporal);
+    logoTemporal = URL.createObjectURL(f);
+
+    document.querySelectorAll(".logo").forEach(img => {
+      img.src = logoTemporal;
+    });
+
+    $("#estado-local").textContent =
+      "Logo cargado para esta vista previa.";
+  });
+
+  $("#archivo-video").addEventListener("change", e => {
+    const f = e.target.files[0];
+    if (!f) return;
+
+    if (visor.open) visor.close();
+
+    if (videoTemporal) URL.revokeObjectURL(videoTemporal);
+    videoTemporal = URL.createObjectURL(f);
+
+    cargarVideo(videoTemporal);
+
+    $("#estado-local").textContent =
+      "Video cargado. Vuelve al inicio y desplázate por la página.";
+  });
+
+  document.querySelectorAll(".logo").forEach(img => {
+    img.addEventListener("error", () => {
+      $("#herramientas").open = true;
+    });
+  });
+}
+</script>
+</body>
+</html>
