@@ -226,32 +226,6 @@ h2{
 }
 .player h3{font:25px Georgia,serif;margin-top:18px}
 .player .muted{font-size:11px;margin-top:8px}
-.gallery-card{
-  display:block;width:100%;padding:0;text-align:left;
-  border:0;background:none;color:var(--text)
-}
-.gallery-image{
-  position:relative;display:block;aspect-ratio:2.1;
-  overflow:hidden;background:#17140e
-}
-.gallery-image video{
-  width:100%;height:100%;object-fit:cover;object-position:70%;opacity:.8
-}
-.play{
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:80px;height:80px;display:grid;place-items:center;
-  border:1px solid var(--gold);border-radius:50%;background:#09090866;
-  backdrop-filter:blur(6px);font-size:18px;padding-left:4px
-}
-.gallery-card:hover .play{background:var(--gold);color:#12100b}
-.gallery-caption{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:24px 0;border-bottom:1px solid var(--line);
-  font:26px Georgia,serif
-}
-.gallery-caption small{
-  font:10px Arial;letter-spacing:.12em;color:var(--gold)
-}
 .closing{
   padding:90px 0 105px;text-align:center;border-top:1px solid #ffffff0a
 }
@@ -332,8 +306,6 @@ dialog::backdrop{background:#000e;backdrop-filter:blur(7px)}
   .ticket strong{font-size:21px}
   .ticket>span{font-size:33px}
   .players{grid-template-columns:1fr 1fr;gap:18px}
-  .gallery-image{aspect-ratio:16/11}
-  .gallery-caption{font-size:22px}
   .closing{padding:75px 0}
   .closing h2{font-size:73px}
   .footer-inner{flex-wrap:wrap}
@@ -360,8 +332,6 @@ dialog::backdrop{background:#000e;backdrop-filter:blur(7px)}
   .prize:first-child{min-height:214px}
   .ticket strong{font-size:25px}
   .ticket>span{font-size:40px}
-  .gallery-caption{font-size:20px;gap:16px}
-  .gallery-caption small{font-size:8px}
   .play{width:63px;height:63px;font-size:15px}
   .closing h2{font-size:62px}
   .closing .eyebrow{font-size:8px}
@@ -395,7 +365,6 @@ dialog::backdrop{background:#000e;backdrop-filter:blur(7px)}
     <nav class="nav-links" aria-label="Navegación principal">
       <a href="#torneo">El torneo</a>
       <a href="#clasificados">Clasificados</a>
-      <a href="#galeria">Galería</a>
     </nav>
     <a class="button" href="#clasificados">
       Ver clasificados <span aria-hidden="true">↗</span>
@@ -549,32 +518,6 @@ dialog::backdrop{background:#000e;backdrop-filter:blur(7px)}
     </div>
   </section>
 
-  <section class="content" id="galeria">
-    <div class="wrap">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">03 / Dentro del torneo</p>
-          <h2>Más allá<br>de <em>las cartas.</em></h2>
-        </div>
-        <p class="muted">
-          Imágenes, momentos y toda<br>la emoción de RIO 10K.
-        </p>
-      </div>
-
-      <button class="gallery-card" id="ver-video"
-        aria-label="Reproducir El espíritu de RIO 10K">
-        <span class="gallery-image">
-          <video id="miniatura" muted playsinline preload="metadata"
-            aria-hidden="true" tabindex="-1"></video>
-          <span class="play" aria-hidden="true">▶</span>
-        </span>
-        <span class="gallery-caption">
-          El espíritu de RIO 10K <small>VER VIDEO ↗</small>
-        </span>
-      </button>
-    </div>
-  </section>
-
   <section class="closing">
     <div class="wrap">
       <p class="eyebrow">Riobamba · Del 14 al 17 de enero</p>
@@ -640,14 +583,14 @@ const suave = (a, b, p) => {
 
 const reducir = matchMedia("(prefers-reduced-motion: reduce)");
 const fondo = $("#fondo");
-const miniatura = $("#miniatura");
 const pista = $("#inicio");
 const escena = $(".cinema");
 
 let videoActual = "torneo.mp4";
 let pendiente = false;
 let objetivo = 0;
-let emitido = NaN;
+let cuadroVideo = 0;
+let ultimoCuadro = 0;
 let listo = false;
 let inicio = 0;
 let distancia = 1;
@@ -673,19 +616,34 @@ function medir() {
   distancia = Math.max(1, pista.offsetHeight - escena.offsetHeight);
 }
 
-function buscarTiempo() {
+// One seek at a time; interpolate against elapsed time, independently of scroll events.
+function animarVideo(ahora) {
+  cuadroVideo = 0;
   if (!listo || document.hidden || fondo.seeking) return;
 
-  if (
-    Math.abs(fondo.currentTime - objetivo) < .025 ||
-    Math.abs(emitido - objetivo) < .008
-  ) return;
+  const diferencia = objetivo - fondo.currentTime;
+  if (Math.abs(diferencia) < 1 / 48) {
+    ultimoCuadro = 0;
+    return;
+  }
+
+  const dt = ultimoCuadro ? Math.min(ahora - ultimoCuadro, 64) : 16;
+  ultimoCuadro = ahora;
+  const mezcla = reducir.matches ? 1 : 1 - Math.exp(-dt / 85);
+  const siguiente = Math.abs(diferencia) < 1 / 24
+    ? objetivo
+    : fondo.currentTime + diferencia * mezcla;
 
   try {
-    emitido = objetivo;
-    fondo.currentTime = objetivo;
+    fondo.currentTime = siguiente;
   } catch {
-    emitido = NaN;
+    ultimoCuadro = 0;
+  }
+}
+
+function buscarTiempo() {
+  if (!cuadroVideo && listo && !document.hidden && !fondo.seeking) {
+    cuadroVideo = requestAnimationFrame(animarVideo);
   }
 }
 
@@ -731,26 +689,20 @@ function solicitar() {
 
 function cargarVideo(src) {
   fondo.pause();
-  miniatura.pause();
   listo = false;
-  emitido = NaN;
   videoActual = src;
   fondo.src = src;
-  miniatura.src = src;
   fondo.load();
-  miniatura.load();
 }
 
 fondo.addEventListener("loadedmetadata", () => {
   listo = Number.isFinite(fondo.duration) && fondo.duration > 0;
-  emitido = NaN;
   solicitar();
 });
 
 fondo.addEventListener("loadeddata", solicitar);
-fondo.addEventListener("seeked", solicitar);
+fondo.addEventListener("seeked", buscarTiempo);
 fondo.addEventListener("play", () => fondo.pause());
-miniatura.addEventListener("play", () => miniatura.pause());
 
 fondo.addEventListener("error", () => {
   listo = false;
@@ -773,7 +725,6 @@ addEventListener("load", () => {
 });
 
 reducir.addEventListener("change", () => {
-  emitido = NaN;
   medir();
   solicitar();
 });
@@ -781,7 +732,6 @@ reducir.addEventListener("change", () => {
 document.addEventListener("visibilitychange", () => {
   fondo.pause();
   if (!document.hidden) {
-    emitido = NaN;
     solicitar();
   }
 });
@@ -842,15 +792,6 @@ function abrir(tipo, src, titulo, boton) {
 
   if (tipo === "video") media.play().catch(() => {});
 }
-
-$("#ver-video").addEventListener("click", e => {
-  abrir(
-    "video",
-    videoActual,
-    "El espíritu de RIO 10K",
-    e.currentTarget
-  );
-});
 
 $("#cerrar").addEventListener("click", () => visor.close());
 
