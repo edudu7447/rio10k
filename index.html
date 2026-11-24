@@ -634,7 +634,52 @@ Cada registro puede contener:
 nombre, ciudad, dia, puntos, foto, video.
 Las rutas de foto y video deben corresponder a archivos de tu página.
 */
-const CLASIFICADOS = [];
+const CLASIFICADOS = [
+  {
+    "nombre": "David Urbina",
+    "foto": "clasificados/clasificado_01_david_urbina.png"
+  },
+  {
+    "nombre": "Ramón Estupiñán",
+    "foto": "clasificados/clasificado_02_ramon_estupinan.png"
+  },
+  {
+    "nombre": "Andrés Simbaya",
+    "foto": "clasificados/clasificado_03_andres_simbaya.png"
+  },
+  {
+    "nombre": "David Toca",
+    "foto": "clasificados/clasificado_04_david_toca.png"
+  },
+  {
+    "nombre": "Marlon Arcos",
+    "foto": "clasificados/clasificado_05_marlon_arcos.png"
+  },
+  {
+    "nombre": "Alejandro Borja",
+    "foto": "clasificados/clasificado_06_alejandro_borja.png"
+  },
+  {
+    "nombre": "Alfonso777",
+    "foto": "clasificados/clasificado_07_alfonso777.png"
+  },
+  {
+    "nombre": "Tarquino Jiménez",
+    "foto": "clasificados/clasificado_08_tarquino_jimenez.png"
+  },
+  {
+    "nombre": "Andrés Vinueza",
+    "foto": "clasificados/clasificado_09_andres_vinueza.png"
+  },
+  {
+    "nombre": "Javier Calderón",
+    "foto": "clasificados/clasificado_10_javier_calderon.png"
+  },
+  {
+    "nombre": "Marlys A",
+    "foto": "clasificados/clasificado_11_marlys_a.png"
+  }
+];
 
 const $ = s => document.querySelector(s);
 const clip = n => Math.max(0, Math.min(1, Number.isFinite(n) ? n : 0));
