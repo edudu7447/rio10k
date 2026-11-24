@@ -259,12 +259,12 @@ h2{
 .players{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
 .player{border-bottom:1px solid var(--line);padding-bottom:22px}
 .portrait{
-  position:relative;aspect-ratio:4/5;
+  position:relative;aspect-ratio:9/16;
   background:linear-gradient(135deg,#40351f,#10100d);
   width:100%;border:0;padding:0;color:var(--gold);
   display:grid;place-items:center;font:70px Georgia,serif;overflow:hidden
 }
-.portrait img{width:100%;height:100%;object-fit:cover}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .play-small{
   position:absolute;bottom:16px;right:16px;border:1px solid var(--gold);
   border-radius:50%;background:#090908aa;width:44px;height:44px;
