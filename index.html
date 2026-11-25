@@ -234,6 +234,17 @@ h2{
 .ticket p{font-size:11px;color:var(--muted);line-height:1.8}
 .ticket strong{font:24px Georgia,serif;color:var(--text)}
 .ticket>span{font:40px Georgia,serif;color:var(--gold)}
+.pairs{border-top:1px solid var(--line)}
+.pairs-title{display:flex;align-items:center;gap:clamp(18px,4vw,60px);margin-bottom:32px}
+.pairs-title .eyebrow{margin-bottom:10px}
+.pairs-mark{position:relative;flex:none;width:clamp(58px,10vw,120px);aspect-ratio:1;color:var(--gold)}
+.pairs-mark span{position:absolute;top:12%;left:12%;width:52%;height:75%;display:grid;
+  place-items:center;border:1px solid currentColor;border-radius:6%;background:#191611;
+  font:clamp(19px,3vw,38px) Georgia,serif;transform:rotate(-15deg)}
+.pairs-mark span+span{left:36%;top:17%;transform:rotate(12deg)}
+.pairs-terms{display:flex;flex-wrap:wrap;gap:24px 60px;border-block:1px solid var(--line);
+  padding:22px 0;margin:24px 0}
+.pairs-terms dd{margin:4px 0 0;font:22px Georgia,serif}
 .qualified{
   background:linear-gradient(#11110e,#090908);
   border-top:1px solid #ffffff0a
@@ -410,6 +421,7 @@ dialog::backdrop{background:#000e;backdrop-filter:blur(7px)}
     </a>
     <nav class="nav-links" aria-label="Navegación principal">
       <a href="#torneo">El torneo</a>
+      <a href="#parejas">Parejas</a>
       <a href="#clasificados">Clasificados</a>
     </nav>
     <a class="button" href="#clasificados">
@@ -538,6 +550,25 @@ dialog::backdrop{background:#000e;backdrop-filter:blur(7px)}
           </div>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="content pairs" id="parejas" aria-labelledby="titulo-parejas">
+    <div class="wrap">
+      <div class="pairs-title">
+        <div class="pairs-mark" aria-hidden="true"><span>♠</span><span>♦</span></div>
+        <div>
+          <p class="eyebrow">RIO 10K · Torneo alterno</p>
+          <h2 id="titulo-parejas">Torneo de <em>Parejas</em></h2>
+        </div>
+      </div>
+      <p class="stack"><time datetime="2027-01-15">Viernes 15 de enero de 2027</time> · Tag Team</p>
+      <dl class="pairs-terms">
+        <div><dt class="eyebrow">Buy-in</dt><dd>$40 por equipo</dd></div>
+        <div><dt class="eyebrow">Recompra</dt><dd>$40 por equipo</dd></div>
+        <div><dt class="eyebrow">Add-on</dt><dd>Sin add-on</dd></div>
+      </dl>
+      <p class="muted">Puedes jugar el Main Event mientras tu pareja juega el torneo alterno.</p>
     </div>
   </section>
 
